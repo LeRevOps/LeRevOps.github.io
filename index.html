@@ -59,9 +59,25 @@
               placeholder="Ask anything about Ben..."
               aria-label="Ask a question about Ben"
             >
-            <button type="submit" class="ask-btn" id="askBtn">Ask</button>
+            <button type="submit" class="ask-btn" id="askBtn" aria-label="Send">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
+                <path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </form>
           <div class="ask-response" id="askResponse" hidden>
+            <div class="ask-loader" id="askLoader" hidden>
+              <svg class="ask-spinner" viewBox="0 0 40 40" width="28" height="28" aria-label="Loading">
+                <polygon points="20,6 21.6,11 20,15 18.4,11"/>
+                <polygon points="20,6 21.6,11 20,15 18.4,11" transform="rotate(45,20,20)"/>
+                <polygon points="20,6 21.6,11 20,15 18.4,11" transform="rotate(90,20,20)"/>
+                <polygon points="20,6 21.6,11 20,15 18.4,11" transform="rotate(135,20,20)"/>
+                <polygon points="20,6 21.6,11 20,15 18.4,11" transform="rotate(180,20,20)"/>
+                <polygon points="20,6 21.6,11 20,15 18.4,11" transform="rotate(225,20,20)"/>
+                <polygon points="20,6 21.6,11 20,15 18.4,11" transform="rotate(270,20,20)"/>
+                <polygon points="20,6 21.6,11 20,15 18.4,11" transform="rotate(315,20,20)"/>
+              </svg>
+            </div>
             <p class="ask-answer" id="askAnswer"></p>
           </div>
         </div>
@@ -217,11 +233,12 @@
       return "API not connected yet — check back soon.";
     }
 
-    const askForm = document.getElementById('askForm');
-    const askInput = document.getElementById('askInput');
-    const askBtn = document.getElementById('askBtn');
+    const askForm     = document.getElementById('askForm');
+    const askInput    = document.getElementById('askInput');
+    const askBtn      = document.getElementById('askBtn');
     const askResponse = document.getElementById('askResponse');
-    const askAnswer = document.getElementById('askAnswer');
+    const askLoader   = document.getElementById('askLoader');
+    const askAnswer   = document.getElementById('askAnswer');
 
     askForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -229,21 +246,21 @@
       if (!q) return;
 
       askBtn.disabled = true;
-      askBtn.textContent = '...';
       askAnswer.textContent = '';
-      askAnswer.classList.add('loading');
+      askAnswer.hidden = true;
+      askLoader.hidden = false;
       askResponse.hidden = false;
 
       try {
         const answer = await askClaude(q);
-        askAnswer.classList.remove('loading');
         askAnswer.textContent = answer;
+        askAnswer.hidden = false;
       } catch {
-        askAnswer.classList.remove('loading');
         askAnswer.textContent = 'Something went wrong. Try again.';
+        askAnswer.hidden = false;
       } finally {
+        askLoader.hidden = true;
         askBtn.disabled = false;
-        askBtn.textContent = 'Ask';
       }
     });
 
