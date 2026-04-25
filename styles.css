@@ -16,6 +16,12 @@
   --font: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-w: 780px;
   --pad-x: 2rem;
+
+  /* Type scale — 4 sizes, decisive jumps */
+  --size-label: 11px;   /* section labels, tracked caps */
+  --size-meta:  12px;   /* dates, tags, context, captions */
+  --size-body:  15px;   /* all descriptive text */
+  --size-title: 17px;   /* h3 entry and project titles */
 }
 
 html {
@@ -85,7 +91,7 @@ nav {
 }
 
 .nav-logo {
-  font-size: 13.5px;
+  font-size: var(--size-body);
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text);
@@ -98,7 +104,7 @@ nav {
 }
 
 .nav-links a {
-  font-size: 13px;
+  font-size: var(--size-meta);
   font-weight: 500;
   color: var(--text-faint);
   transition: color 0.12s;
@@ -141,7 +147,7 @@ section:last-of-type { border-bottom: none; }
 .section-alt { background: var(--bg-alt); }
 
 .section-label {
-  font-size: 10px;
+  font-size: var(--size-label);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -165,14 +171,14 @@ h1 {
 }
 
 .hero-role {
-  font-size: 13.5px;
+  font-size: var(--size-body);
   font-weight: 500;
   color: var(--text-faint);
   margin-bottom: 1.5rem;
 }
 
 .hero-bio {
-  font-size: 15px;
+  font-size: var(--size-body);
   color: var(--text-muted);
   max-width: 62ch;
   line-height: 1.8;
@@ -198,55 +204,28 @@ h1 {
 }
 
 /* ── Projects ────────────────────────────────── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
+.project-list { display: flex; flex-direction: column; }
 
-.project-card {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  background: var(--bg);
-  transition: box-shadow 0.18s, border-color 0.18s;
+.project-item {
+  padding: 1.875rem 0;
+  border-bottom: 1px solid var(--border);
 }
-.project-card:hover {
-  box-shadow: 0 4px 18px oklch(14% 0.006 255 / 0.07);
-  border-color: oklch(80% 0.010 80);
-}
+.project-item:last-child { border-bottom: none; }
 
-.project-card-header {
+.project-title-row {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 0.875rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.625rem;
 }
 
-.project-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--ic);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 800;
-  color: oklch(97% 0.005 255);
-  letter-spacing: 0.02em;
-  flex-shrink: 0;
-}
-
-.project-card-header h3 {
-  font-size: 14px;
+.project-title-row h3 {
+  font-size: var(--size-title);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--text);
-  margin-bottom: 0.35rem;
-  line-height: 1.3;
+  white-space: nowrap;
 }
 
 .project-tags {
@@ -256,38 +235,35 @@ h1 {
 }
 
 .project-tags span {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-size: var(--size-meta);
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--accent);
   background: var(--accent-bg);
   padding: 2px 6px;
   border-radius: 3px;
 }
 
-.project-card > p {
-  font-size: 13px;
+.project-item > p {
+  font-size: var(--size-body);
   color: var(--text-muted);
-  line-height: 1.75;
-  flex: 1;
+  line-height: 1.8;
+  max-width: 66ch;
+  margin-bottom: 0.875rem;
 }
 
 .project-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 11.5px;
+  font-size: var(--size-meta);
   font-weight: 500;
   color: var(--text-faint);
-  border-top: 1px solid var(--border);
-  padding-top: 0.75rem;
-  margin-top: auto;
 }
 
 .project-meta a {
   color: var(--accent);
   font-weight: 600;
-  font-size: 11.5px;
 }
 .project-meta a:hover { color: var(--accent-mid); text-decoration: underline; }
 
@@ -303,64 +279,46 @@ h1 {
 }
 .exp-item:last-child { border-bottom: none; }
 
-.exp-left { padding-top: 2px; }
-
-.exp-logo {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: white;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.exp-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 5px;
-}
-
-.exp-logo-mono {
-  background: var(--ic);
-  border-color: transparent;
-  font-size: 10px;
-  font-weight: 800;
-  color: oklch(97% 0.005 255);
-  letter-spacing: 0.02em;
-  padding: 0;
-}
+.exp-left { padding-top: 3px; }
 
 .exp-date {
-  font-size: 11px;
+  font-size: var(--size-meta);
   font-weight: 500;
   color: var(--text-faint);
   line-height: 1.5;
-  margin-bottom: 0.175rem;
+  margin-bottom: 0.2rem;
 }
 
 .exp-company {
-  font-size: 11px;
+  font-size: var(--size-meta);
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.exp-company::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .exp-right h3 {
-  font-size: 14px;
+  font-size: var(--size-title);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--text);
   margin-bottom: 0.35rem;
 }
 
 .exp-right p {
-  font-size: 13.5px;
+  font-size: var(--size-body);
   color: var(--text-muted);
   line-height: 1.8;
 }
@@ -379,16 +337,16 @@ h1 {
 .skill-row:last-child { border-bottom: none; }
 
 .skill-label {
-  font-size: 10.5px;
+  font-size: var(--size-label);
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-faint);
-  padding-top: 1px;
+  padding-top: 2px;
 }
 
 .skill-values {
-  font-size: 13.5px;
+  font-size: var(--size-body);
   color: var(--text-muted);
   line-height: 1.7;
 }
@@ -400,7 +358,7 @@ h1 {
 }
 
 .contact-bio {
-  font-size: 14px;
+  font-size: var(--size-body);
   color: var(--text-muted);
   margin-bottom: 1.25rem;
 }
@@ -409,7 +367,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0 1.5rem;
-  font-size: 13.5px;
+  font-size: var(--size-body);
   font-weight: 600;
 }
 
@@ -422,7 +380,7 @@ footer { border-top: 1px solid var(--border); }
 .footer-inner {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-  font-size: 11.5px;
+  font-size: var(--size-meta);
   color: var(--text-faint);
 }
 
