@@ -57,82 +57,100 @@
     <section id="projects">
       <div class="container">
         <h2 class="section-label">Projects</h2>
-        <div class="project-list">
+        <div class="projects-grid">
 
-          <article class="project-item">
-            <div class="project-title-row">
-              <h3>LeClaw.io</h3>
-              <div class="project-tags">
-                <span>TypeScript</span><span>Next.js</span><span>Supabase</span><span>Claude API</span>
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon" style="--ic: oklch(37% 0.12 255)">LC</div>
+              <div>
+                <h3>LeClaw.io</h3>
+                <div class="project-tags">
+                  <span>TypeScript</span><span>Next.js</span><span>Supabase</span><span>Claude API</span>
+                </div>
               </div>
             </div>
-            <p>Open-source RevOps agent team deployable across HubSpot and Salesforce via OAuth. Automates pipeline inspection, BDR accountability audits, data quality checks, and deal review. Ships a multi-tenant SaaS dashboard at app.leclaw.io with Vercel Cron scheduling and async Slack delivery.</p>
+            <p>Open-source RevOps agent team deployable across HubSpot and Salesforce via OAuth. Automates pipeline inspection, BDR accountability audits, data quality checks, and deal review. Multi-tenant SaaS dashboard with Vercel Cron scheduling and async Slack delivery.</p>
             <div class="project-meta">
-              <span>Founder &middot; March 2026&ndash;Present</span>
+              <span>Founder &middot; 2026&ndash;Present</span>
               <a href="https://github.com/LeRevOps" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
             </div>
           </article>
 
-          <article class="project-item">
-            <div class="project-title-row">
-              <h3>Le Directeur</h3>
-              <div class="project-tags">
-                <span>Claude API</span><span>Multi-agent</span><span>Docker</span><span>Node.js</span>
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon" style="--ic: oklch(36% 0.12 278)">LD</div>
+              <div>
+                <h3>Le Directeur</h3>
+                <div class="project-tags">
+                  <span>Claude API</span><span>Multi-agent</span><span>Docker</span><span>Node.js</span>
+                </div>
               </div>
             </div>
-            <p>Natural language orchestrator for RevOps questions. Routes queries to specialized agents, runs them in parallel, and synthesizes answers with stored context. Cascading model routing (Haiku per agent, Sonnet for synthesis) keeps token cost minimal. Each agent runs containerized with resource limits.</p>
+            <p>Natural language orchestrator for RevOps questions. Routes queries to specialized agents, runs them in parallel, and synthesizes answers with stored context. Cascading model routing — Haiku per agent, Sonnet for synthesis — keeps token cost minimal.</p>
             <div class="project-meta">
               <span>LeClaw.io &middot; 2026</span>
             </div>
           </article>
 
-          <article class="project-item">
-            <div class="project-title-row">
-              <h3>Docker GTM AI Agent</h3>
-              <div class="project-tags">
-                <span>Claude API</span><span>Google Drive</span><span>Python</span>
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon" style="--ic: oklch(35% 0.10 196)">DA</div>
+              <div>
+                <h3>Docker GTM AI Agent</h3>
+                <div class="project-tags">
+                  <span>Claude API</span><span>Google Drive</span><span>Python</span>
+                </div>
               </div>
             </div>
-            <p>Internal AI agent on Claude that ingests Docker's GTM SOP library from Google Drive. Enables a 110-person global revenue team to query process documentation in plain language. Prompt-level guardrails enforce approved answers only, scoping the agent strictly to sanctioned process.</p>
+            <p>Internal AI agent on Claude that ingests Docker's GTM SOP library from Google Drive, enabling a 110-person revenue team to query process docs in plain language. Prompt-level guardrails enforce approved answers only.</p>
             <div class="project-meta">
               <span>Docker, Inc. &middot; 2025</span>
             </div>
           </article>
 
-          <article class="project-item">
-            <div class="project-title-row">
-              <h3>Automated Lead Routing</h3>
-              <div class="project-tags">
-                <span>Salesforce</span><span>SQL</span><span>Outreach</span><span>Common Room</span>
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon" style="--ic: oklch(36% 0.12 162)">LR</div>
+              <div>
+                <h3>Automated Lead Routing</h3>
+                <div class="project-tags">
+                  <span>Salesforce</span><span>SQL</span><span>Outreach</span><span>Common Room</span>
+                </div>
               </div>
             </div>
-            <p>Docker's first automated inbound routing system, combining PQLs, web traffic, Common Room intent signals, product usage data, and GitHub activity into Outreach sequences across all campaign types. Reduced inbound time-to-contact from 10 days to under 24 hours.</p>
+            <p>Docker's first automated inbound routing system combining PQLs, web traffic, intent signals, product usage, and GitHub activity into Outreach sequences across all campaign types. Reduced time-to-contact from 10 days to under 24 hours.</p>
             <div class="project-meta">
               <span>Docker, Inc. &middot; 2024</span>
             </div>
           </article>
 
-          <article class="project-item">
-            <div class="project-title-row">
-              <h3>Territory Carving Framework</h3>
-              <div class="project-tags">
-                <span>Snowflake</span><span>SQL</span><span>Salesforce ETM</span>
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon" style="--ic: oklch(40% 0.13 45)">TC</div>
+              <div>
+                <h3>Territory Carving Framework</h3>
+                <div class="project-tags">
+                  <span>Snowflake</span><span>SQL</span><span>Salesforce ETM</span>
+                </div>
               </div>
             </div>
-            <p>Data-driven territory carving using product usage and adoption signals via Snowflake. Deployed Salesforce Enterprise Territory Management with Account and Opportunity Teams for dynamic assignments and real-time pipeline visibility across a global field org.</p>
+            <p>Data-driven territory carving using product usage and adoption signals via Snowflake. Deployed Salesforce Enterprise Territory Management with Account and Opportunity Teams for dynamic assignments and real-time pipeline visibility.</p>
             <div class="project-meta">
               <span>Docker, Inc. &middot; 2025</span>
             </div>
           </article>
 
-          <article class="project-item">
-            <div class="project-title-row">
-              <h3>AI Contract Language Generator</h3>
-              <div class="project-tags">
-                <span>AI</span><span>Salesforce CPQ</span><span>Python</span>
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon" style="--ic: oklch(36% 0.11 342)">CG</div>
+              <div>
+                <h3>AI Contract Language Generator</h3>
+                <div class="project-tags">
+                  <span>AI</span><span>Salesforce CPQ</span><span>Python</span>
+                </div>
               </div>
             </div>
-            <p>Docker's first AI workflow for revenue teams: an AI-powered contract language generation system covering 80% of closed deals ($200M ARR). Led full GTM enablement for AI adoption across the sales org, including rep training and process documentation.</p>
+            <p>Docker's first AI workflow for revenue teams: an AI-powered contract language generation system covering 80% of closed deals ($200M ARR). Led full GTM enablement for AI adoption across the sales org.</p>
             <div class="project-meta">
               <span>Docker, Inc. &middot; 2023</span>
             </div>
