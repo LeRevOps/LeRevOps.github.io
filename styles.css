@@ -203,6 +203,83 @@ h1 {
   font-weight: 400;
 }
 
+/* ── Ask bar ─────────────────────────────────── */
+.ask-wrap {
+  margin-top: 2rem;
+  max-width: 52ch;
+}
+
+.ask-form {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.12s;
+}
+.ask-form:focus-within { border-color: oklch(70% 0.04 255); }
+
+.ask-input {
+  flex: 1;
+  font-family: var(--font);
+  font-size: var(--size-body);
+  color: var(--text);
+  background: var(--bg);
+  border: none;
+  outline: none;
+  padding: 0.65rem 0.875rem;
+  min-width: 0;
+}
+.ask-input::placeholder { color: var(--text-faint); }
+
+.ask-btn {
+  font-family: var(--font);
+  font-size: var(--size-meta);
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s;
+  flex-shrink: 0;
+}
+.ask-btn:hover { background: var(--accent-mid); }
+.ask-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ask-response {
+  margin-top: 0.875rem;
+  padding: 0.875rem 1rem;
+  border-left: 2px solid var(--border);
+}
+
+.ask-answer {
+  font-size: var(--size-body);
+  color: var(--text-muted);
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.ask-answer.loading::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--text-faint);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 /* ── Projects ────────────────────────────────── */
 .project-list {
   display: grid;

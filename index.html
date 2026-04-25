@@ -49,6 +49,22 @@
           <span aria-hidden="true">/</span>
           <a href="mailto:benleblanctech@gmail.com">benleblanctech@gmail.com</a>
         </nav>
+
+        <div class="ask-wrap">
+          <form class="ask-form" id="askForm" autocomplete="off">
+            <input
+              type="text"
+              class="ask-input"
+              id="askInput"
+              placeholder="Ask anything about Ben..."
+              aria-label="Ask a question about Ben"
+            >
+            <button type="submit" class="ask-btn" id="askBtn">Ask</button>
+          </form>
+          <div class="ask-response" id="askResponse" hidden>
+            <p class="ask-answer" id="askAnswer"></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -189,6 +205,49 @@
       })
     );
 
+    // ── Ask bar ──────────────────────────────────
+    async function askClaude(question) {
+      // TODO: replace with real endpoint
+      // return fetch('https://your-worker.workers.dev', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ question })
+      // }).then(r => r.json()).then(d => d.answer);
+      await new Promise(r => setTimeout(r, 800));
+      return "API not connected yet — check back soon.";
+    }
+
+    const askForm = document.getElementById('askForm');
+    const askInput = document.getElementById('askInput');
+    const askBtn = document.getElementById('askBtn');
+    const askResponse = document.getElementById('askResponse');
+    const askAnswer = document.getElementById('askAnswer');
+
+    askForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const q = askInput.value.trim();
+      if (!q) return;
+
+      askBtn.disabled = true;
+      askBtn.textContent = '...';
+      askAnswer.textContent = '';
+      askAnswer.classList.add('loading');
+      askResponse.hidden = false;
+
+      try {
+        const answer = await askClaude(q);
+        askAnswer.classList.remove('loading');
+        askAnswer.textContent = answer;
+      } catch {
+        askAnswer.classList.remove('loading');
+        askAnswer.textContent = 'Something went wrong. Try again.';
+      } finally {
+        askBtn.disabled = false;
+        askBtn.textContent = 'Ask';
+      }
+    });
+
+    // ── Nav active state ──────────────────────────
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-links a');
     const obs = new IntersectionObserver(entries => {
